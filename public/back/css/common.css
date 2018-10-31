@@ -168,4 +168,13 @@ a:active {
   margin-bottom: 15px;
 }
 
+
+
+/* <!-- 为 ECharts 准备一个具备大小（宽高）的 盒子 --> */
+.lt_content .echarts_left,
+.lt_content .echarts_right{
+  width: 48%;
+  height: 400px;
+}
+
 /* lt_main 结束 */

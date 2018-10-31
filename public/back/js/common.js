@@ -46,7 +46,26 @@ $('.icon_menu').on('click',function(){
     $('#logoutModal').modal('show');
   });
 
-
-
-
+  // 退出功能
+  // 退出登陆的方式:
+  // (1) 用户端(浏览器端), 用户自己清除浏览器缓存  (清空了 cookie),
+  //     本质上将会话标识 sessionId 也清除了
+  // (2) 前端通过发送ajax退出请求, 让后台销毁当前用户的登录状态
+  // 点击模态框的确定按钮，退出登录
+  $('#logout_Btn').click(function(){
+    $.ajax({
+      type: "get",
+      url: "/employee/employeeLogout",
+      // 如果后台在响应头中, 设置了 响应类型为 json 格式, 就可以省略 dataType
+      data: "data",
+      dataType: "json",
+      success: function (info) {
+        // console.log(info);
+        if(info.success){
+          // 跳转到登录页
+          location.href = 'login.html';
+        }
+      }
+    });
+  });
 });
