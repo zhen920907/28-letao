@@ -2,7 +2,7 @@
  * Created by Jepson on 2018/4/6.
  */
 // 1.进度条的功能实现
-$(function(){ 
+
 
   // 配置进度中的圆环效果
   NProgress.configure({
@@ -21,7 +21,7 @@ $(function(){
       NProgress.done();
      }, 800);
    }); 
-});
+
 
 
  // 2.二级菜单的显示与隐藏功能

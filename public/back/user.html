@@ -18,7 +18,7 @@
       <a href="index.html">黑马28期</a>
     </div>
     <div class="user">
-      <img src="images/default.jpg" alt="">
+      <img src="images/zhao.jpg" alt="">
       <p>超级管理员</p>
     </div>
     <div class="nav">
@@ -87,10 +87,41 @@
 
           </tbody>
         </table>
+
+        <!-- 分页结构 -->
+        <div class="text-right">
+            <ul class="pagination">
+                
+              </ul>
+        </div>
+
       </div>
     </div>   
    </div>
   </div>
+
+
+  <!---------------  启用禁用模态框 -------------------> 
+  <div id="userModal" class="modal fade" tabindex="-1">
+      <!-- 模态框 -->
+      <!-- modal-sm 小   modal-lg 大    默认中等  -->
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+            <h4 class="modal-title">温馨提示</h4>
+          </div>
+          <div class="modal-body">
+            <p class="red"><i class="glyphicon glyphicon-info-sign"></i>您确定要执行此操作吗？</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary" id="okBtn">确定</button>
+          </div>
+        </div>
+      </div>
+  </div>
+
 
   <!-- 登录退出的模态框,  配置 data-dismiss="modal" 可以关闭模态框 -->
   <!-- 蒙层 -->
@@ -118,7 +149,7 @@
   <script type="text/html" id="tpl">
     {{each rows v i}}
         <tr>
-              <td>{{ i+1 }}</td>
+              <td>{{ (page - 1 ) * size +i+1 }}</td>
               <td>{{ v.username }}</td>
               <td>{{v.mobile}}</td>
 
@@ -127,7 +158,7 @@
            0 表示当前用户是 禁用状态
       -->
               <td>{{v.isDelete === 1 ? '正常' : '已禁用'}}</td>
-              <td>
+              <td data-id = "{{v.id}}">
                 {{if v.isDelete === 1}}
                 <button class="btn btn-danger">禁用</button>
                 {{else}}
@@ -145,10 +176,12 @@
   <script src="lib/nprogress/nprogress.js"></script>
   <!-- 引入模板引擎 -->
   <script src="lib/artTemplate/template-web.js"></script>  
-  <!-- 判断用户登录的js -->
-  <script src="js/checkLogin.js"></script>
+  <!-- 引入分页插件 -->
+  <script src="lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>  
   <!-- 公共的js，谁需要谁就引入 -->
   <script src="js/common.js"></script>
+  <!-- 判断用户登录的js -->
+  <script src="js/checkLogin.js"></script>
   <!-- 首页的js -->
   <script src="js/user.js"></script>
 

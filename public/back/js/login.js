@@ -118,7 +118,6 @@ $("#form").on('success.form.bv', function (e) {
 
 
 // 3.表单重置功能
-
 // 点击重置按钮，然后重置表单
 $(' [type="reset"]').on('click',function(){
   $('#form').data('bootstrapValidator').resetForm(true);

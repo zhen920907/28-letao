@@ -18,7 +18,7 @@
       <a href="index.html">黑马28期</a>
     </div>
     <div class="user">
-      <img src="images/default.jpg" alt="">
+      <img src="images/zhao.jpg" alt="">
       <p>超级管理员</p>
     </div>
     <div class="nav">
@@ -70,13 +70,61 @@
       </ol>
 
 
-       <!-- 首页内容区域 -->
+       <!-- 一级分类内容区域 -->
       <div class="content">
-       
+        <button class="btn btn-default mb_20" id="add_btn">添加分类</button>
+        <table class="table table-bordered table-hover">
+            <thead>              				
+               <tr>
+                 <th width="20%">序号</th>
+                 <th width="80%">一级分类</th>
+               </tr>
+            </thead>
+            <tbody>
+              <!-------------------------- 挖个坑 -------------------->
+            </tbody>
+        </table>
+  
+          <!-- 分页结构 -->
+          <div class="text-right">
+              <ul class="pagination">
+                  
+              </ul>
+          </div>
       </div>
     </div>   
    </div>
   </div>
+
+
+<!-- 添加功能的模态框 -->
+<div id="addModal" class="modal fade" tabindex="-1">
+    <!-- 模态框 -->
+    <!-- modal-sm 小   modal-lg 大    默认中等  -->
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+         <!---------------- 模态框的form表单 --------------->
+        <form  id="form">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">添加分类</h4>
+            </div>
+            <div class="modal-body">
+                <!-- bootstrap 要求input外层 套一个 form-group, 做表单校验时, 如果不加 form-group 会报错 -->                
+                  <div class="form-group">
+                    <input type="text" name="categoryName" class="form-control" placeholder="请输入一级分类">
+                  </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="submit" class="btn btn-primary" >添加</button>
+            </div>
+        </form>
+       
+      </div>
+    </div>
+</div>
+
 
   <!-- 登录退出的模态框,  配置 data-dismiss="modal" 可以关闭模态框 -->
   <!-- 蒙层 -->
@@ -94,11 +142,24 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary" id="logout_Btn">确定</button>
+          <button type="button" class="btn btn-primary" id="logout_Btn">退出</button>
         </div>
       </div>
     </div>
   </div>   
+
+
+
+  <!-- 模板引擎渲染 -->
+  <script type="text/html" id="tpl">
+  {{ each rows v i}}
+    <tr>
+      <!-- i+1表示的是当前页的第几条  (page-1)*size+i+1则表示的是在所有的条数中的第几条信息-->
+      <td>{{ (page-1)*size+i+1 }}</td>
+      <td>{{ v.categoryName }}</td>
+    </tr>
+  {{ /each }}  
+  </script>
   
 
   <script src="lib/jquery/jquery.min.js"></script>
@@ -107,11 +168,13 @@
   <script src="lib/nprogress/nprogress.js"></script>
   <!-- 引入模板引擎 -->
   <script src="lib/artTemplate/template-web.js"></script>  
+  <!-- 引入分页插件 -->
+  <script src="lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
   <!-- 判断用户登录的js -->
   <script src="js/checkLogin.js"></script>
   <!-- 公共的js，谁需要谁就引入 -->
   <script src="js/common.js"></script>
-  <!-- 首页的js -->
+  <!-- 一级分类的js -->
   <script src="js/first.js"></script>
 
 
