@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>乐淘首页</title>
   <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="lib/bootstrap-validator/css/bootstrapValidator.min.css">
   <link rel="stylesheet" href="lib/nprogress/nprogress.css">
   <link rel="stylesheet" href="css/common.css">
 </head>
@@ -116,9 +117,43 @@
                 <h4 class="modal-title">添加分类</h4>
             </div>
             <div class="modal-body">
-                <!-- bootstrap 要求input外层 套一个 form-group, 做表单校验时, 如果不加 form-group 会报错 -->                
+                <!-- bootstrap 要求input外层 套一个 form-group, 做表单校验时, 如果不加 form-group 会报错 --> 
+                
                   <div class="form-group">
-                    <input type="text" name="categoryName" class="form-control" placeholder="请输入一级分类">
+                      <div class="dropdown">
+                        <!-- 一级分类按钮 -->
+                          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                            <span id="dropdownText">请选择一级分类</span>
+                            <span class="caret"></span>
+                          </button>
+                          <!-- 一级分类下拉列表 -->
+                          <ul class="dropdown-menu" >
+                            <!------------------ 挖个坑 ------------------->
+                          </ul>
+                      </div>
+                      <!-- 一级分类 id -->
+                      <input type="hidden" name="categoryId">
+                      <!-- hot 火热的品牌， 0表示不火热  1表示火热 -->
+                      <input type="hidden" name="hot" value="1">
+                  </div>  
+                       <!-------------二级分类文本框  -->
+                  <div class="form-group">
+                    <input type="text" name="brandName " class="form-control" placeholder="请输入二级分类">
+                  </div>
+                  <!-- 上传图片按钮 -->
+                  <div class="form-group">
+                      <label for="fileupload" class="btn btn-default">上传图片</label>
+                      <!-- name指定图片上传时后台用于接收的参数名 -->
+                      <!-- data-url指定图片上传时的接口地址 -->
+                      <!-- multiple指定多文件上传 -->
+                         
+                      <input type="file" data-url="/category/addSecondCategoryPic" name="pic1" id="fileupload" style="display:none">
+                  </div>
+
+                   <!-- 上传的图片 -->
+                   <div class="form-group" id="img_box">
+                      <img src="images/none.png" alt="">
+                      <input type="hidden" name="brandLogo">
                   </div>
             </div>
             <div class="modal-footer">
@@ -167,9 +202,20 @@
    </tr>
     {{/each}}  
   </script>
+
+  <!-- 准备模板渲染下拉列表内容 -->
+  <script type="text/html" id="dropdownTpl">
+     {{ each rows v i }}
+        <li><a data-id="{{v.id}}" href="#">{{v.categoryName}}</a></li>
+     {{ /each }}
+  </script>
   
 
   <script src="lib/jquery/jquery.min.js"></script>
+  <!-- 引入文件上传的包 -->
+  <script src="lib/jquery-fileupload/jquery.ui.widget.js"></script>
+  <script src="lib/jquery-fileupload/jquery.fileupload.js"></script>
+
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
   <script src="lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
   <script src="lib/nprogress/nprogress.js"></script>
@@ -186,3 +232,4 @@
 
 </body>
 </html>
+　　
