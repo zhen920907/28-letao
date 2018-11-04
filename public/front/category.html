@@ -33,14 +33,7 @@
               <div class="mui-scroll">
                 <!--这里放置真实显示的DOM内容-->
                 <ul class="mui-clearfix">
-                  <li><a class="now" href="#">运动馆</a></li>
-                  <li><a href="#">运动馆</a></li>
-                  <li><a href="#">运动馆</a></li>
-                  <li><a href="#">运动馆</a></li>
-                  <li><a href="#">运动馆</a></li>
-                  <li><a href="#">运动馆</a></li>
-                  <li><a href="#">运动馆</a></li>
-                  <li><a href="#">运动馆</a></li>
+                  <!----------- 挖个坑 ------------->                 
                 </ul>
               </div>
           </div>
@@ -54,9 +47,9 @@
             <div class="mui-scroll">
               <!--这里放置真实显示的DOM内容-->
               <ul class="mui-clearfix">
-                  <li><a href="#"><img src="images/brand1.png" alt=""><p>耐克</p></a></li>
-                  <li><a href="#"><img src="images/brand1.png" alt=""><p>耐克</p></a></li>
-                  <li><a href="#"><img src="images/brand1.png" alt=""><p>耐克</p></a></li>
+                
+                <!-------------- 挖个坑 ---------------->
+                 
               </ul>
 
             </div>
@@ -79,11 +72,34 @@
 
   </div>
 
+  <!-- 准备一级分类的模板 -->
+  <script type="text/html" id="left_tpl">
+     {{ each rows v i}}
+     <li><a data-id="{{ v.id }}" class="{{ i=== 0 ? 'now': ''}}" href="#">{{v.categoryName}}</a></li>
+     {{ /each }}
+  </script>
+
+  <!-- 准备二级分类的模板 -->
+  <script type="text/html" id="right_tpl">
+    {{ if rows.length === 0 }}
+    <p class="tips">没有更多分类信息了</p>
+    {{ else }}
+    {{ each rows v i}}
+    <li>
+      <a href="#"><img src="{{v.brandLogo}}" alt="">
+        <p>{{v.brandName}}</p>
+     </a>
+    </li>
+    {{ /each }}
+    {{ /if }}
+  </script>
+
 
 <!-- 引入mui插件 -->
   <script src="lib/mui/js/mui.js"></script>
   <!-- 引入zepto插件，zepto相当于移动端的jQuery，它比jQuery更轻量，体积更小，封装了移动端的手势事件 -->
   <script src="lib/zepto/zepto.min.js"></script>
+  <script src="lib/artTemplate/template-web.js"></script>
   <script src="js/comment.js"></script>
   <script src="js/category.js"></script>
   

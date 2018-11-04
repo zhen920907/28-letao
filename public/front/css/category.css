@@ -53,3 +53,7 @@
 .lt_category_right li p{
    text-align: center;
 }
+
+p.tips{
+  padding:10px;
+}
