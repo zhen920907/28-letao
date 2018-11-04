@@ -126,27 +126,21 @@
     //2. 指定校验字段,要先给input设置name属性
     fields: {
     //配置一级分类校验，
-    categoryId: {
-      // 配置校验规则
+    // 品牌名称
+    brandName: {
+      //校验规则
       validators: {
-        //非空校验
         notEmpty: {
-          // 非空提示
-          message: '请选择一级分类'
-        },        
+          message: "请输入二级分类名称"
+        }
       }
     },
-
-
-    //配置二级分类校验，
-    brandName: {
-      // 配置校验规则
+    // 一级分类的id
+    categoryId: {
       validators: {
-        //非空校验
         notEmpty: {
-          // 非空提示
-          message: '请输入二级分类名称'
-        },        
+          message: "请选择一级分类"
+        }
       }
     },
 
