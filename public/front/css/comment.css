@@ -162,6 +162,10 @@ img{
   text-decoration: line-through;
 }
 
+.lt_product .lt_product_item .mui-ellipsis-2 {
+  height: 39px;
+}
+
 
 /* 公共的搜索样式框 */
 .lt_search{

@@ -108,6 +108,6 @@ $('.search_btn').click(function(){
   // 清空输入框的内容
   $('input.search').val('');
   // 需要跳转页面到搜索列表页面，并显示相对应的商品
-  location.href = 'searchList.html?key='+key;
+  location.href = 'searchlist.html?key='+key;
 });
 });
